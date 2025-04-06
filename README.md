@@ -1,5 +1,3 @@
-# MuFreak
-Mobile Application Project
 
 
-This is a Flutter project targeting Android, iOS, Web.
+MuFreak is a Flutter project that aims to develop mobile applications for Android, iOS, and the web.
