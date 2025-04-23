@@ -9,5 +9,5 @@ const borderColor = Colors.grey;
 // IMAGES
 //const defaultProfileImage = '../../../assets/images/DefaultProfileImage.png';
 class DefaultProfileImage {
-  static const String png = 'assets/images/default_profile_image.png';
+  static const String png = 'assets/images/default_profile_image.png';    //default user avatar
 }

@@ -3,7 +3,7 @@ import 'package:mufreak/constants.dart';
 import 'package:mufreak/views/widgets/text_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({super.key});
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
