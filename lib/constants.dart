@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mufreak/controllers/auth_controller.dart';
 
 // COLORS
 const backgroundColor = Colors.black;
@@ -15,7 +16,10 @@ class DefaultProfileImage {
   static const String png = 'assets/images/default_profile_image.png';    //default user avatar
 }
 
-//FIREBASE
+// FIREBASE
 var firebaseAuth = FirebaseAuth.instance;
 var firebaseStorage = FirebaseStorage.instance;
 var firebaseFirestore = FirebaseFirestore.instance;
+
+// CONTROLLER
+var authController = AuthController.instance;

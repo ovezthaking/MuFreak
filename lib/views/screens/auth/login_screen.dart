@@ -41,7 +41,7 @@ class LoginScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _emailController,
                 labelText: 'Email',
-                isObscure: false,
+                isObscure: true,
                 icon: Icons.email,
               ),
             ),
@@ -71,9 +71,10 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () {
-                  print('Login user');
-                },
+                onTap: () => authController.loginUser(
+                    _emailController.text, 
+                    _passwordController.text,
+                ),
                 child: const Center(
                   child: Text(
                     'Login', 
