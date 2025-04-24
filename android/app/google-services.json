@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "46702865025",
-    "project_id": "mufreak-31220",
-    "storage_bucket": "mufreak-31220.firebasestorage.app"
+    "project_number": "746069692069",
+    "project_id": "mufreak-by-ovez",
+    "storage_bucket": "mufreak-by-ovez.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:46702865025:android:ebca879dd14ae04d54fb80",
+        "mobilesdk_app_id": "1:746069692069:android:709f95438d3a12b166874c",
         "android_client_info": {
           "package_name": "com.ovezo.mufreak"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAp5Zdn92mL_x8kNN8Mf1GzZk4Xas2x-oo"
+          "current_key": "AIzaSyCr6eyxzo9xiGBoZSyRsl-xQl2zqJImbss"
         }
       ],
       "services": {
