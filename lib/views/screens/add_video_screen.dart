@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mufreak/constants.dart';
@@ -9,7 +11,10 @@ class AddVideoScreen extends StatelessWidget {
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfrimScreen(),),);
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfrimScreen(
+        videoFile: File(video.path),
+        videoPath: video.path,
+      ),),);
     }
   }
 
