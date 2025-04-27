@@ -19,8 +19,8 @@ class ConfrimScreen extends StatefulWidget {
 
 class _ConfrimScreenState extends State<ConfrimScreen> {
   late VideoPlayerController controller;
-  TextEditingController songController = TextEditingController();
-  TextEditingController captionController = TextEditingController();
+  TextEditingController _songController = TextEditingController();
+  TextEditingController _captionController = TextEditingController();
 
   UploadVideoController uploadVideoController = Get.put(UploadVideoController());
 
@@ -61,17 +61,21 @@ class _ConfrimScreenState extends State<ConfrimScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width-20,
                     margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextInputField(controller: songController, labelText: 'Song Name', icon: Icons.music_note_sharp),
+                    child: TextInputField(controller: _songController, labelText: 'Song Name', icon: Icons.music_note_sharp),
                   ),
                   const SizedBox(height: 10,),
                   Container(
                     width: MediaQuery.of(context).size.width-20,
                     margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextInputField(controller: captionController, labelText: 'Caption', icon: Icons.closed_caption),
+                    child: TextInputField(controller: _captionController, labelText: 'Caption', icon: Icons.closed_caption),
                   ),
                   const SizedBox(height: 10,),
                   ElevatedButton(
-                    onPressed: () {}, 
+                    onPressed: () => uploadVideoController.uploadVideo(
+                      _songController.text, 
+                      _captionController.text, 
+                      widget.videoPath,
+                      ), 
                     child: Text(
                       'Share!', 
                       style: TextStyle(
