@@ -12,13 +12,13 @@ class CustomIcon extends StatelessWidget {
         children: [
           Container(margin: const EdgeInsets.only(left: 10,), width: 38,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 250, 45, 108,),
+              color: const Color.fromARGB(255, 50, 78, 77),
               borderRadius: BorderRadius.circular(7),
             ),
           ),
           Container(margin: const EdgeInsets.only(right: 10,), width: 38,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 32, 211, 234,),
+              color: const Color.fromARGB(255, 47, 151, 26),
               borderRadius: BorderRadius.circular(7),
             ),
           ),
