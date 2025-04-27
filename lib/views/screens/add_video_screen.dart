@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mufreak/constants.dart';
-import 'package:mufreak/views/screens/confrim_screen.dart';
+import 'package:mufreak/views/screens/confirm_screen.dart';
 
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({super.key});
