@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
+import 'package:mufreak/views/screens/auth/login_screen.dart';
 import 'package:mufreak/views/widgets/text_input_field.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -139,7 +140,10 @@ class SignupScreen extends StatelessWidget {
                 const Text("Do u have an account?", style: TextStyle(fontSize: 20,),),
                 InkWell(
                   onTap: () {
-                    print('navigating user');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   },
                   child: 
                 Text(' Log in', style: TextStyle(fontSize: 20, color: buttonColor),)),

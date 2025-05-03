@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
+import 'package:mufreak/views/screens/auth/signup_screen.dart';
 import 'package:mufreak/views/widgets/text_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -92,7 +93,10 @@ class LoginScreen extends StatelessWidget {
                 const Text("Have u not registered yet?", style: TextStyle(fontSize: 20,),),
                 InkWell(
                   onTap: () {
-                    print('navigating user');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignupScreen()),
+                    );
                   },
                   child: 
                 Text(' Register', style: TextStyle(fontSize: 20, color: buttonColor),)),

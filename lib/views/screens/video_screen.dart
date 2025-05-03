@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/views/widgets/circle_animation.dart';
 import 'package:mufreak/views/widgets/video_player_item.dart';
-import 'package:video_player/video_player.dart';
+import 'package:mufreak/controllers/video_controller.dart';
+import 'package:get/get.dart';
 
 class VideoScreen extends StatelessWidget {
-  const VideoScreen({super.key});
+  VideoScreen({super.key});
+
+  final VideoController videoController = Get.put(VideoController());
 
   buildProfile(String profilePhoto){
     return SizedBox(width: 60, height: 60, child:Stack(
@@ -55,109 +58,114 @@ class VideoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: PageView.builder(
-        //itemCount: ,
-        controller: PageController(initialPage: 0, viewportFraction: 1),
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {
-          return Stack(
-            children: [
-              //VideoPlayerItem(videoUrl: ,),
-              Column(
+      body: Obx(
+        () {
+          return PageView.builder(
+            itemCount: videoController.videoList.length,
+            controller: PageController(initialPage: 0, viewportFraction: 1),
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) {
+              final data = videoController.videoList[index];
+              return Stack(
                 children: [
-                  const SizedBox(height: 100,),
-                  Expanded(child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  VideoPlayerItem(videoUrl: data.videoUrl,),
+                  Column(
                     children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 20,),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min, 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'username',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'caption',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Row(
+                      const SizedBox(height: 100,),
+                      Expanded(child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 20,),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min, 
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  const Icon(Icons.music_note_rounded, size:15, color: Colors.white,),
                                   Text(
-                                  'song name',
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Color.fromARGB(255, 130, 173, 80),
-                                    fontWeight: FontWeight.bold,
+                                    data.username,
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                 ),
+                                  Text(
+                                    data.caption,
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.music_note_rounded, size:15, color: Colors.white,),
+                                      Text(
+                                      data.songname,
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color: Color.fromARGB(255, 130, 173, 80),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                     ),
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 100,
-                        margin: EdgeInsets.only(top: size.height/5),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            buildProfile('string url'),
-                            Column(
+                          Container(
+                            width: 100,
+                            margin: EdgeInsets.only(top: size.height/5),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child:
-                                    Icon(Icons.favorite, color: Colors.red, size:40,),
+                                buildProfile(data.profilePhoto),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {},
+                                      child:
+                                        const Icon(Icons.favorite, color: Colors.red, size:40,),
+                                    ),
+                                    const SizedBox(height: 7,),
+                                    Text(data.likes.length.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
+                                    const SizedBox(height: 10,),
+                                    InkWell(
+                                      onTap: () {},
+                                      child:
+                                        const Icon(Icons.comment, color: Colors.white, size:40,),
+                                    ),
+                                    const SizedBox(height: 7,),
+                                    Text(data.commentCount.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
+                                    const SizedBox(height: 10,),
+                                    InkWell(
+                                      onTap: () {},
+                                      child:
+                                        const Icon(Icons.reply_all_rounded, color: Colors.white, size:40,),
+                                    ),
+                                    const SizedBox(height: 7,),
+                                    Text(data.shareCountl.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
+                                    const SizedBox(height: 10,),
+                                  ],
                                 ),
-                                const SizedBox(height: 7,),
-                                Text("44,204", style:const TextStyle(fontSize: 20, color: Colors.white,),),
-                                const SizedBox(height: 10,),
-                                InkWell(
-                                  onTap: () {},
-                                  child:
-                                    Icon(Icons.comment, color: Colors.white, size:40,),
+                                CircleAnimation(
+                                  child: buildMusicAlbum(data.profilePhoto),
                                 ),
-                                const SizedBox(height: 7,),
-                                Text("47", style:const TextStyle(fontSize: 20, color: Colors.white,),),
-                                const SizedBox(height: 10,),
-                                InkWell(
-                                  onTap: () {},
-                                  child:
-                                    Icon(Icons.reply_all_rounded, color: Colors.white, size:40,),
-                                ),
-                                const SizedBox(height: 7,),
-                                Text("7", style:const TextStyle(fontSize: 20, color: Colors.white,),),
-                                const SizedBox(height: 10,),
                               ],
                             ),
-                            CircleAnimation(
-                              child: buildMusicAlbum('profile photo'),
-                            ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        ],
+                      ),)
                     ],
-                  ),)
+                  ),
                 ],
-              ),
-            ],
+              );
+            },
           );
-        },
+        }
       ),
     );
   }

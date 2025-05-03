@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:mufreak/constants.dart';
 import 'package:mufreak/controllers/auth_controller.dart';
 import 'package:mufreak/views/screens/auth/login_screen.dart';
-import 'package:mufreak/views/screens/auth/signup_screen.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,7 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override

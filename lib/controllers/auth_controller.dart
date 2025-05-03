@@ -62,7 +62,7 @@ class AuthController extends GetxController{
     String downloadUrl = await snap.ref.getDownloadURL();
     return downloadUrl;
   } catch (e) {
-    print('Error uploading image: ${e.toString()}');
+    //print('Error uploading image: ${e.toString()}');
     Get.snackbar('Error uploading image', e.toString());
     rethrow;  // Rethrow to propagate the error
   }
@@ -101,7 +101,7 @@ class AuthController extends GetxController{
     try{
       if(email.isNotEmpty && password.isNotEmpty){
         await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-        print('login successssss');
+        //print('login successssss');
       }
       else{
         Get.snackbar('Error login', "Please fill all the fields");

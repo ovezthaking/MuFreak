@@ -6,10 +6,10 @@ import 'package:mufreak/controllers/auth_controller.dart';
 import 'package:mufreak/views/screens/add_video_screen.dart';
 import 'package:mufreak/views/screens/video_screen.dart';
 
-const pages = [
+List pages = [
   VideoScreen(),
   Text('Search Screen'),
-  AddVideoScreen(),
+  const AddVideoScreen(),
   Text('Messages Screen'),
   Text('Profile Screen'),
 ];
