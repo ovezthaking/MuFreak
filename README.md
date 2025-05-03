@@ -37,7 +37,7 @@ To get started with MuFreak, ensure you have Flutter installed on your system. F
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/MuFreak.git
+    git clone https://github.com/ovezthaking/MuFreak.git
     cd MuFreak
     ```
 
