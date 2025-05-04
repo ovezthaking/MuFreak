@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _emailController,
                 labelText: 'Email',
-                isObscure: true,
+                isObscure: false,
                 icon: Icons.email,
               ),
             ),
@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _passwordController,
                 labelText: 'Password',
-                isObscure: false,
+                isObscure: true,
                 icon: Icons.lock,
               ),
             ),

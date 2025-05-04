@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mufreak/constants.dart';
 import 'package:mufreak/views/widgets/circle_animation.dart';
 import 'package:mufreak/views/widgets/video_player_item.dart';
 import 'package:mufreak/controllers/video_controller.dart';
@@ -126,9 +127,9 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () => videoController.likeVideo(data.id),
                                       child:
-                                        const Icon(Icons.favorite, color: Colors.red, size:40,),
+                                        Icon(Icons.favorite, color: data.likes.contains(authController.user.uid) ? Colors.red: Colors.white, size:40,),
                                     ),
                                     const SizedBox(height: 7,),
                                     Text(data.likes.length.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
