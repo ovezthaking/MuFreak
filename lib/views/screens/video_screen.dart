@@ -147,7 +147,7 @@ class VideoScreen extends StatelessWidget {
                                         const Icon(Icons.reply_all_rounded, color: Colors.white, size:40,),
                                     ),
                                     const SizedBox(height: 7,),
-                                    Text(data.shareCountl.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
+                                    Text(data.shareCount.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
                                     const SizedBox(height: 10,),
                                   ],
                                 ),

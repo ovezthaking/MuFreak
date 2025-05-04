@@ -6,7 +6,7 @@ class Video {
   String id;
   List likes;
   int commentCount;
-  int shareCountl;
+  int shareCount;
   String songname;
   String caption;
   String videoUrl;
@@ -19,7 +19,7 @@ class Video {
     required this.id,
     required this.likes,
     required this.commentCount,
-    required this.shareCountl,
+    required this.shareCount,
     required this.songname,
     required this.caption,
     required this.videoUrl,
@@ -33,7 +33,7 @@ class Video {
     "id": id,
     "likes": likes,
     "commentCount": commentCount,
-    "shareCountl": shareCountl,
+    "shareCountl": shareCount,
     "songname": songname,
     "caption": caption,
     "videoUrl": videoUrl,
@@ -50,8 +50,8 @@ class Video {
       id: snapshot['id'],
       likes: snapshot['likes'],
       commentCount: snapshot['commentCount'],
-      shareCountl: snapshot['shareCountl'],
-      songname: snapshot['sogName'],
+      shareCount: snapshot['shareCountl'],
+      songname: snapshot['songname'],
       caption: snapshot['caption'],
       videoUrl: snapshot['videoUrl'],
       thumbnail: snapshot['thumbnail'],
