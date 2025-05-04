@@ -15,7 +15,13 @@ class CommentController extends GetxController{
   }
 
   getComment() async{
-
+    _comments.bindStream(firebaseFirestore.collection('videos').doc(_postId).collection('comments').snapshots().map((QuerySnapshot query) {
+      List<Comment> retValue = [];
+      for(var element in query.docs){
+        retValue.add(Comment.fromSnap(element));
+      }
+      return retValue;
+    }));
   }
 
   postComment(String commentText) async {
@@ -35,10 +41,15 @@ class CommentController extends GetxController{
         uid: authController.user.uid, 
         id: 'Comment $len'
       );
-      await firebaseFirestore.collection('videos')
-      .doc(_postId).collection('comments')
-      .doc('Comment $len')
-      .set(comment.toJson(),);
+      await firebaseFirestore
+        .collection('videos')
+        .doc(_postId).collection('comments')
+        .doc('Comment $len')
+        .set(comment.toJson(),);
+      DocumentSnapshot doc = await firebaseFirestore.collection('videos').doc(_postId).get();
+      await firebaseFirestore.collection('videos').doc(_postId).update({
+        'commentCount': (doc.data()! as dynamic)['commentCount'] + 1,
+      });
       }
     }
     catch(e){
