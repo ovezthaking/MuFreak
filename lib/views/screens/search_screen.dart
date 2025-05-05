@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mufreak/constants.dart';
 import 'package:mufreak/controllers/search_controller.dart';
 import 'package:mufreak/models/user.dart';
+import 'package:mufreak/views/screens/profile_screen.dart';
 
 
 class SearchScreen extends StatelessWidget {
@@ -43,9 +44,8 @@ class SearchScreen extends StatelessWidget {
             itemBuilder: (context, index){
               User user = searchController.searchedUsers[index];
               return InkWell(
-                onTap: () {
-                  
-                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ProfileScreen(uid:user.uid)),),
                 child: ListTile(
                   leading: CircleAvatar(backgroundImage: NetworkImage(user.profilePhoto),),
                   title: Text(user.name, style: const TextStyle(fontSize: 18, color: Colors.white),),
