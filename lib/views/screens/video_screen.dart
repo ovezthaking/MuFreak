@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
+import 'package:mufreak/views/screens/comment_screen.dart';
 import 'package:mufreak/views/widgets/circle_animation.dart';
 import 'package:mufreak/views/widgets/video_player_item.dart';
 import 'package:mufreak/controllers/video_controller.dart';
@@ -135,7 +136,9 @@ class VideoScreen extends StatelessWidget {
                                     Text(data.likes.length.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
                                     const SizedBox(height: 10,),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => CommentScreen(id: data.id, ),
+                                      ),),
                                       child:
                                         const Icon(Icons.comment, color: Colors.white, size:40,),
                                     ),

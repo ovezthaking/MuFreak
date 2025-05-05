@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:mufreak/controllers/upload_video_controller.dart';
 import 'package:mufreak/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
@@ -19,8 +18,8 @@ class ConfrimScreen extends StatefulWidget {
 
 class _ConfrimScreenState extends State<ConfrimScreen> {
   late VideoPlayerController controller;
-  TextEditingController _songController = TextEditingController();
-  TextEditingController _captionController = TextEditingController();
+  final TextEditingController _songController = TextEditingController();
+  final TextEditingController _captionController = TextEditingController();
 
   UploadVideoController uploadVideoController = Get.put(UploadVideoController());
 
