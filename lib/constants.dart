@@ -9,7 +9,7 @@ import 'package:mufreak/views/screens/video_screen.dart';
 
 List pages = [
   VideoScreen(),
-  const SearchScreen(),
+  SearchScreen(),
   const AddVideoScreen(),
   Text('Messages Screen'),
   Text('Profile Screen'),
