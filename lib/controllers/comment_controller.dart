@@ -55,7 +55,21 @@ class CommentController extends GetxController{
     catch(e){
       Get.snackbar('Error While Commenting', e.toString(),);
     }
+  }
 
-    
+  likeComment(String id) async {
+    var uid = authController.user.uid;
+    DocumentSnapshot doc = await firebaseFirestore.collection('videos').doc(_postId).collection('comments').doc(id).get();
+
+    if((doc.data()! as dynamic)['likes'].contains(uid)){
+      await firebaseFirestore.collection('videos').doc(_postId).collection('comments').doc(id).update({
+        'likes': FieldValue.arrayRemove([uid]),
+      });
+    }
+    else {
+      await firebaseFirestore.collection('videos').doc(_postId).collection('comments').doc(id).update({
+        'likes': FieldValue.arrayUnion([uid]),
+      });
+    }
   }
 }

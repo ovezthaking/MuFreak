@@ -39,7 +39,7 @@ class CommentScreen extends StatelessWidget {
                         title: Row(
                           children: [
                             Text(
-                              comment.username,
+                              '${comment.username}  ',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: buttonColor,
@@ -47,7 +47,7 @@ class CommentScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              ' ${comment.comment}',
+                              comment.comment,
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -75,8 +75,11 @@ class CommentScreen extends StatelessWidget {
                           ],
                         ),
                         trailing: InkWell(
-                        onTap:() {},
-                          child: const Icon(Icons.favorite, size: 25, color: Colors.red,)),
+                        onTap:() => commentController.likeComment(comment.id),
+                          child:  Icon(
+                            Icons.favorite, 
+                            size: 25, 
+                            color: comment.likes.contains(authController.user.uid) ? buttonColor : Colors.white,)),
                       );
                     },);
                   }
