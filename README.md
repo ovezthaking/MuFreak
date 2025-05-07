@@ -1,5 +1,6 @@
 # MuFreak
 
+MuFreak is an application designed for artists who want to share their music, videos, and creative work with a broader audience. The platform allows users to upload, play, and manage video content while interacting with other artists and fans. With Firebase integration, the app ensures secure data storage, user authentication, and fast access to content.
 MuFreak is an advanced Flutter-based project designed to create high-performance, cross-platform mobile applications for Android, iOS, and the web. By leveraging Flutter's capabilities, MuFreak ensures a seamless and consistent user experience across all platforms with a single codebase.
 
 ## 🎯 Project Goal
