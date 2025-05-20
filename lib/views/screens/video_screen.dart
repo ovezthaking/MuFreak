@@ -12,7 +12,9 @@ class VideoScreen extends StatelessWidget {
   final VideoController videoController = Get.put(VideoController());
 
   buildProfile(String profilePhoto){
-    return SizedBox(width: 60, height: 60, child:Stack(
+    return InkWell(
+      onTap: () {},
+      child: SizedBox(width: 60, height: 60, child:Stack(
       children: [
         Positioned(left: 5, child: Container(
           width: 50,
@@ -31,6 +33,7 @@ class VideoScreen extends StatelessWidget {
           ),
         ),),
       ],
+    ),
     ),
     );
   }

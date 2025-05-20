@@ -159,8 +159,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               widget.uid == authController.user.uid 
                                 ? 'Sign Out' 
                                 : controller.user['isFollowing']
-                                  ? 'Unfollow' 
-                                  : 'Follow', 
+                                  ? 'Follow' 
+                                  : 'Unfollow', 
                               style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),),),
                         ),
