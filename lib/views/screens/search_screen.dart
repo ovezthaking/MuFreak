@@ -30,6 +30,7 @@ class SearchScreen extends StatelessWidget {
               onFieldSubmitted: (value) => searchController.searchUser(value),
             ),
           ),
+          
           body: searchController.searchedUsers.isEmpty ? const Center(
             child: Text(
               'Search for users!',

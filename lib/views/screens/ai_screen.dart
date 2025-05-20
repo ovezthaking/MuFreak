@@ -5,6 +5,13 @@ class AiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'AI Screen',
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
+      ),
+    );
   }
 }

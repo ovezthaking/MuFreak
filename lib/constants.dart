@@ -4,13 +4,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mufreak/controllers/auth_controller.dart';
 import 'package:mufreak/views/screens/add_video_screen.dart';
+import 'package:mufreak/views/screens/ai_screen.dart';
 import 'package:mufreak/views/screens/profile_screen.dart';
 import 'package:mufreak/views/screens/search_screen.dart';
 import 'package:mufreak/views/screens/video_screen.dart';
 
 List pages = [
   VideoScreen(),
-  Text('AI Screen'),
+  AiScreen(),
   const AddVideoScreen(),
   Text('Messages Screen'),
   ProfileScreen(uid: authController.user.uid),
