@@ -37,6 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.1
+  http: ^1.4.0
   image_picker: ^0.8.4+4
   timeago: ^3.1.0
   video_compress: ^3.1.0
@@ -85,3 +86,4 @@ flutter:
   # see https://flutter.dev/to/font-from-package
   assets:
     - assets/images/default_profile_image.png
+    - assets/images/ai_assist.png

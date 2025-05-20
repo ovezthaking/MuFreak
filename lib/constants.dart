@@ -29,6 +29,10 @@ class DefaultProfileImage {
   static const String png = 'assets/images/default_profile_image.png';    //default user avatar
 }
 
+class AiAssistantImage{
+  static const String png = 'assets/images/ai_assist.png'; // ai assistant avatar
+}
+
 // FIREBASE
 var firebaseAuth = FirebaseAuth.instance;
 var firebaseStorage = FirebaseStorage.instance;
