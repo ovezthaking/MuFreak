@@ -10,7 +10,7 @@ import 'package:mufreak/views/screens/video_screen.dart';
 
 List pages = [
   VideoScreen(),
-  SearchScreen(),
+  Text('AI Screen'),
   const AddVideoScreen(),
   Text('Messages Screen'),
   ProfileScreen(uid: authController.user.uid),
