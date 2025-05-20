@@ -8,7 +8,12 @@ class ApiService {
     try {
        var response = await http.get(
         Uri.parse("$BASE_URL/chat/completions"),
-        headers: {'Authorization' : 'Bearer $API_KEY'}
+        headers: {
+          'Authorization' : 'Bearer $API_KEY',
+          'Content-Type' : 'application/json',
+          'Accept' : '*/*',
+          },
+        
         );
 
         Map jsonResponse = jsonDecode(response.body);

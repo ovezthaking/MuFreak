@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
+import 'package:mufreak/services/api_service.dart';
 
 class AiScreen extends StatelessWidget {
   const AiScreen({super.key});
@@ -56,7 +57,44 @@ class AiScreen extends StatelessWidget {
                 fontSize: 25,
               ),),
             ),
-          )
+          ),
+          ListTile(
+                title: TextFormField(
+                  //controller: ,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                  decoration: const InputDecoration(
+                    labelText: 'Write your comment...',
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromARGB(255, 28, 133, 33)),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromARGB(255, 28, 133, 33)),
+                    ),
+                  ),
+                ),
+                trailing: TextButton(
+                  onPressed: () async {
+                    try {
+                      await ApiService.getModels();
+                    }
+                    catch(e){
+                      print("error $e");
+                    }
+                  } ,
+                  child: const Text(
+                    'Send',
+                    style: TextStyle(fontSize: 16, color: Colors.white,),
+                    ),
+                ),
+              ),
         ],
       ),
     );
