@@ -28,6 +28,13 @@ class ApiService {
       'Authorization': 'Bearer $API_KEY_OPENR'
       'Content-Type' : 'application/json',
     };
+
+    final body = jsonEncode({
+      'model':'',
+      'prompt': userInput,
+      'max_tokens':100,
+      'temperature': 0.7,
+    });
   }
 }
 
