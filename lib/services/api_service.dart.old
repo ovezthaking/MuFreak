@@ -6,10 +6,12 @@ import 'package:mufreak/api_consts.dart';
 class ApiService {
   static Future<void> getModels() async{
     try {
-       var response = await http.post(
-        Uri.parse(BASE_URL),
+       var response = await http.get(
+        Uri.parse("$BASE_URL/chat/completions"),
         headers: {
+          'Authorization' : 'Bearer $API_KEY',
           'Content-Type' : 'application/json',
+          'Accept' : '*/*',
           },
         
         );
@@ -19,15 +21,6 @@ class ApiService {
     } catch(e){
       print("error $e");
     }
-  }
-
-  Future<String> getOpenRouterResponse(String userInput) async {
-    var endpoint = BASE_URL_OPENR;
-
-    final headers = {
-      'Authorization': 'Bearer $API_KEY_OPENR'
-      'Content-Type' : 'application/json',
-    };
   }
 }
 
