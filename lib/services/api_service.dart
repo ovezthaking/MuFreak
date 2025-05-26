@@ -30,7 +30,7 @@ class ApiService {
     };
 
     final body = jsonEncode({
-      'model':'',
+      'model':'deepseek/deepseek-prover-v2:free',
       'prompt': userInput,
       'max_tokens':100,
       'temperature': 0.7,
