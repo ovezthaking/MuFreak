@@ -65,6 +65,7 @@ To get started with MuFreak, ensure you have Flutter installed on your system. F
 - **GetX**: Lightweight state management and navigation library.
 - **Video Player**: For video playback.
 - **Image Picker**: For selecting images and videos from the gallery or camera.
+- **http**: For API endpoints managment.
 
 ## 🤝 Contributing
 
