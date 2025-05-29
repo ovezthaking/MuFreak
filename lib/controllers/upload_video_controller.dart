@@ -37,8 +37,15 @@ class UploadVideoController extends GetxController{
     return downloadUrl;
   }
 
+  List<String> extractMentions(String text) {
+    final mentionRegex = RegExp(r'@(\w+)');
+    final matches = mentionRegex.allMatches(text);
+    return matches.map((match) => match.group(1)!).toList();
+  }
+
   uploadVideo(String songName, String caption, String videoPath) async {
     try{
+      List<String> mentions = extractMentions(caption);
       String uid = firebaseAuth.currentUser!.uid;
       DocumentSnapshot userDoc = await firebaseFirestore.collection('users').doc(uid).get();
     //idd
@@ -65,9 +72,32 @@ class UploadVideoController extends GetxController{
       video.toJson(),
      );
      Get.back();
+     for (String mention in mentions) {
+        await _notifyMentionedUser(mention, video.id);
+      }
     }
     catch(e){
       Get.snackbar('Error uploading video', e.toString());
+    }
+  }
+
+  _notifyMentionedUser(String username, String videoId) async {
+    // Znajdź użytkownika po nazwie
+    QuerySnapshot userQuery = await firebaseFirestore
+        .collection('users')
+        .where('name', isEqualTo: username)
+        .get();
+    
+    if (userQuery.docs.isNotEmpty) {
+      String userId = userQuery.docs.first.id;
+      await firebaseFirestore.collection('notifications').add({
+        'type': 'mention',
+        'fromUserId': authController.user.uid,
+        'toUserId': userId,
+        'videoId': videoId,
+        'timestamp': DateTime.now(),
+        'read': false,
+      });
     }
   }
 }

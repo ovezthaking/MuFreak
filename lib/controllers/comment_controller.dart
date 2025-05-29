@@ -15,7 +15,7 @@ class CommentController extends GetxController{
   }
 
   getComment() async{
-    _comments.bindStream(firebaseFirestore.collection('videos').doc(_postId).collection('comments').snapshots().map((QuerySnapshot query) {
+    _comments.bindStream(firebaseFirestore.collection('videos').doc(_postId).collection('comments').orderBy('likes', descending: true).orderBy('datePublished', descending: true).snapshots().map((QuerySnapshot query) {
       List<Comment> retValue = [];
       for(var element in query.docs){
         retValue.add(Comment.fromSnap(element));

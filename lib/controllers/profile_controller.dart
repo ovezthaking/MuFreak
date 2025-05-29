@@ -83,14 +83,16 @@ class ProfileController extends GetxController{
           .doc(_uid.value)
           .collection('followers')
           .doc(authController.user.uid)
-          .set({});
+          .set({'followedAt': DateTime.now(),
+          'username': authController.user.displayName ?? 'User',});
         await firebaseFirestore
           .collection('users')
           .doc(authController.user.uid)
           .collection('following')
           .doc(_uid.value)
           .set({});
-
+        
+        await _addFollowActivity(_uid.value);
         _user.value.update('followers', (value) => (int.parse(value) + 1).toString());
       }
       else{
@@ -112,5 +114,14 @@ class ProfileController extends GetxController{
 
       _user.value.update('isFollowing', (value) => !value);
       update();
+  }
+
+  _addFollowActivity(String followedUserId) async {
+    await firebaseFirestore.collection('activities').add({
+      'type': 'follow',
+      'fromUserId': authController.user.uid,
+      'toUserId': followedUserId,
+      'timestamp': DateTime.now(),
+    });
   }
 }
