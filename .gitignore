@@ -16,3 +16,8 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+# Exclude API constants file
+lib/api_consts.dart
+**/lib/api_consts.dart
+!src/**/lib/api_consts.dart
+
