@@ -72,4 +72,48 @@ class CommentController extends GetxController{
       });
     }
   }
+
+  replyToComment(String parentCommentId, String replyText) async {
+    try {
+      if (replyText.isNotEmpty) {
+        DocumentSnapshot userDoc = await firebaseFirestore
+            .collection('users')
+            .doc(authController.user.uid)
+            .get();
+        
+        var allDocs = await firebaseFirestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .doc(parentCommentId)
+            .collection('replies')
+            .get();
+
+        int len = allDocs.docs.length;
+
+        Comment reply = Comment(
+          username: (userDoc.data()! as dynamic)['name'],
+          comment: replyText.trim(),
+          datePublished: DateTime.now(),
+          likes: [],
+          profilePhoto: (userDoc.data()! as dynamic)['profilePhoto'],
+          uid: authController.user.uid,
+          id: 'Reply $len',
+        );
+
+        await firebaseFirestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .doc(parentCommentId)
+            .collection('replies')
+            .doc('Reply $len')
+            .set(reply.toJson());
+
+        Get.snackbar('Success', 'Reply posted!');
+      }
+    } catch (e) {
+      Get.snackbar('Error While Replying', e.toString());
+    }
+  }
 }

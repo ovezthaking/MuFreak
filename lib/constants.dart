@@ -6,7 +6,6 @@ import 'package:mufreak/controllers/auth_controller.dart';
 import 'package:mufreak/views/screens/add_video_screen.dart';
 import 'package:mufreak/views/screens/ai_screen.dart';
 import 'package:mufreak/views/screens/profile_screen.dart';
-import 'package:mufreak/views/screens/search_screen.dart';
 import 'package:mufreak/views/screens/video_screen.dart';
 
 List pages = [
