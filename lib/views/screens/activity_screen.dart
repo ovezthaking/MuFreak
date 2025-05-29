@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
 import 'package:mufreak/views/screens/comment_screen.dart';
 import 'package:mufreak/views/screens/home_screen.dart';
-import 'package:mufreak/views/screens/video_screen.dart';
 import 'package:mufreak/views/widgets/circle_animation.dart';
 import 'package:mufreak/views/widgets/video_player_item.dart';
 import 'package:mufreak/controllers/activity_controller.dart';

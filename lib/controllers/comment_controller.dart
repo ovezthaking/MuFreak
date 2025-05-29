@@ -94,7 +94,7 @@ class CommentController extends GetxController{
         Comment reply = Comment(
           username: (userDoc.data()! as dynamic)['name'],
           comment: replyText.trim(),
-          datePublished: DateTime.now(),
+          datePublished: DateTime.now(), 
           likes: [],
           profilePhoto: (userDoc.data()! as dynamic)['profilePhoto'],
           uid: authController.user.uid,
@@ -116,4 +116,50 @@ class CommentController extends GetxController{
       Get.snackbar('Error While Replying', e.toString());
     }
   }
+
+
+  likeReply(String parentCommentId, String replyId) async {
+    try {
+      var uid = authController.user.uid;
+      DocumentSnapshot doc = await firebaseFirestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(parentCommentId)
+          .collection('replies')
+          .doc(replyId)
+          .get();
+
+      if ((doc.data()! as dynamic)['likes'].contains(uid)) {
+        // Usuń polubienie
+        await firebaseFirestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .doc(parentCommentId)
+            .collection('replies')
+            .doc(replyId)
+            .update({
+          'likes': FieldValue.arrayRemove([uid]),
+        });
+      } else {
+        // Dodaj polubienie
+        await firebaseFirestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .doc(parentCommentId)
+            .collection('replies')
+            .doc(replyId)
+            .update({
+          'likes': FieldValue.arrayUnion([uid]),
+        });
+      }
+    } catch (e) {
+      Get.snackbar('Error While Liking Reply', e.toString());
+    }
+  }
+
+
+  
 }
