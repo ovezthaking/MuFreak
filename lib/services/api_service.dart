@@ -31,7 +31,7 @@ Future<String> getOpenRouterResponse(String userInput) async {
     };
 
     final body = jsonEncode({
-      'model':'deepseek/deepseek-prover-v2:free',
+      'model':'deepseek/deepseek-chat-v3-0324:free',
       'messages': [
       {
       "role": "system",
@@ -84,5 +84,8 @@ curl https://openrouter.ai/api/v1/chat/completions \
     }
   ]
 }'
+
+
+
 
 */
