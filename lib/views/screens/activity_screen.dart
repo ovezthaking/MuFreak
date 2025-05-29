@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mufreak/constants.dart';
-import 'package:mufreak/views/screens/activity_screen.dart';
 import 'package:mufreak/views/screens/comment_screen.dart';
+import 'package:mufreak/views/screens/home_screen.dart';
+import 'package:mufreak/views/screens/video_screen.dart';
 import 'package:mufreak/views/widgets/circle_animation.dart';
 import 'package:mufreak/views/widgets/video_player_item.dart';
-import 'package:mufreak/controllers/video_controller.dart';
+import 'package:mufreak/controllers/activity_controller.dart';
 import 'package:get/get.dart';
 
-class VideoScreen extends StatelessWidget {
-  VideoScreen({super.key});
+class ActivityScreen extends StatelessWidget {
+  ActivityScreen({super.key});
 
-  final VideoController videoController = Get.put(VideoController());
+  final ActivityController activityController = Get.put(ActivityController());
 
   buildProfile(String profilePhoto){
     return InkWell(
@@ -71,11 +72,11 @@ class VideoScreen extends StatelessWidget {
         title: TextButton(
           onPressed: () {
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => ActivityScreen()),
+              MaterialPageRoute(builder: (context) => HomeScreen()),
             );
           },
           child: const Text(
-            "Following",
+            "All activity",
             style: TextStyle(color: Color.fromARGB(230, 255, 255, 255)),
           ),
         ),
@@ -84,11 +85,11 @@ class VideoScreen extends StatelessWidget {
       body: Obx(
         () {
           return PageView.builder(
-            itemCount: videoController.videoList.length,
+            itemCount: activityController.followingVideos.length,
             controller: PageController(initialPage: 0, viewportFraction: 1),
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-              final data = videoController.videoList[index];
+              final data = activityController.followingVideos[index];
               return Stack(
                 children: [
                   VideoPlayerItem(videoUrl: data.videoUrl,),
@@ -149,7 +150,7 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () => videoController.likeVideo(data.id),
+                                      onTap: () => activityController.likeVideo(data.id),
                                       child:
                                         Icon(Icons.favorite, color: data.likes.contains(authController.user.uid) ? Colors.red: Colors.white, size:40,),
                                     ),
@@ -167,7 +168,7 @@ class VideoScreen extends StatelessWidget {
                                     Text(data.commentCount.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
                                     const SizedBox(height: 10,),
                                     InkWell(
-                                      onTap: () => videoController.shareVideo(data.id),
+                                      onTap: () => activityController.shareVideo(data.id),
                                       child:
                                         const Icon(Icons.reply_all_rounded, color: Colors.white, size:40,),
                                     ),
@@ -192,6 +193,7 @@ class VideoScreen extends StatelessWidget {
           );
         }
       ),
+      
     );
   }
 }
