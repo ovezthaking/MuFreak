@@ -149,7 +149,7 @@ class VideoScreen extends StatelessWidget {
                                     Text(data.commentCount.toString(), style:const TextStyle(fontSize: 20, color: Colors.white,),),
                                     const SizedBox(height: 10,),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () => videoController.shareVideo(data.id),
                                       child:
                                         const Icon(Icons.reply_all_rounded, color: Colors.white, size:40,),
                                     ),
