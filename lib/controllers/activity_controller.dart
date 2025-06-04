@@ -25,9 +25,9 @@ class ActivityController extends GetxController {
 
       List<String> followingIds = followingSnapshot.docs.map((doc) => doc.id).toList();
       
-      print("Current user ID: ${authController.user.uid}");
-      print("Following IDs: $followingIds");
-      print("Number of followed users: ${followingIds.length}");
+      // print("Current user ID: ${authController.user.uid}");
+      // print("Following IDs: $followingIds");
+      // print("Number of followed users: ${followingIds.length}");
 
       if (followingIds.isNotEmpty) {
         _followingVideos.bindStream(
@@ -38,7 +38,7 @@ class ActivityController extends GetxController {
               .snapshots()
               .map((QuerySnapshot query) {
             List<Video> retVal = [];
-            print("Found ${query.docs.length} videos from followed users");
+            //print("Found ${query.docs.length} videos from followed users");
             for (var element in query.docs) {
               
               retVal.add(Video.fromSnap(element));
@@ -47,11 +47,11 @@ class ActivityController extends GetxController {
           }),
         );
       } else {
-        print("No followed users found - showing empty list");
+        // print("No followed users found - showing empty list");
         _followingVideos.value = [];
       }
     } catch (e) {
-      print("Error getting following videos: $e");
+      // print("Error getting following videos: $e");
     }
   }
 

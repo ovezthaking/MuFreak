@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mufreak/main.dart';
-import 'package:mufreak/views/screens/home_screen.dart';
 import 'package:mufreak/views/screens/ai_screen.dart';
 import 'package:mufreak/views/screens/search_screen.dart';
 import 'package:mufreak/views/screens/auth/login_screen.dart';

@@ -54,7 +54,7 @@ Future<String> getOpenRouterResponse(String userInput) async {
       final data = jsonDecode(response.body);
       
       if (data['choices'] != null && data['choices'][0]['message'] != null) {
-        print(data['choices'][0]['message']['content']);
+        //print(data['choices'][0]['message']['content']);
         return data['choices'][0]['message']['content'];
       } else if (data['choices'] != null && data['choices'][0]['text'] != null) {
         return data['choices'][0]['text'];
