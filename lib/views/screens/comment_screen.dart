@@ -10,7 +10,7 @@ class CommentScreen extends StatelessWidget {
 
   final TextEditingController _commentController = TextEditingController();
   final TextEditingController _replyController = TextEditingController();
-  CommentController commentController = Get.put(CommentController());
+  final CommentController commentController = Get.put(CommentController());
 
   // Zmienne do zarządzania stanem odpowiedzi
   final RxString _replyingTo = ''.obs;
@@ -273,11 +273,11 @@ class CommentScreen extends StatelessWidget {
                 return const SizedBox.shrink();
               }
               
-              return Container(
+                return Container(
                 margin: const EdgeInsets.only(left: 50, top: 10),
                 child: Column(
                   children: snapshot.data!.docs.map((replyDoc) {
-                    final replyData = replyDoc.data() as Map<String, dynamic>;
+                    final replyData = replyDoc.data();
                     // Przekaż parentCommentId do _buildReplyItem
                     return _buildReplyItem(replyData, comment.id);
                   }).toList(),
